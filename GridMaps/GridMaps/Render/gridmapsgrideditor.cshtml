@@ -1,0 +1,26 @@
+﻿@using System.Web.Mvc.Html
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@if (Model.value != null)
+{
+    string value = Model.value.ToString();    
+    var id = Guid.NewGuid().ToString() + "_map";
+    var js_id = id.Replace('-', '_');
+    <div class="map" id="@id" style="height:400px;width:100%;"></div>
+    <script type="text/javascript">
+        var settings = @Html.Raw(value);
+
+        var mapCenter = new google.maps.LatLng(settings.latitude, settings.longitude);
+
+        var mapElement = document.getElementById('@id');
+        var mapOptions = { zoom: settings.zoom, center: mapCenter, mapTypeId: google.maps.MapTypeId.ROADMAP };
+
+        map = new google.maps.Map(mapElement, mapOptions);
+
+        marker = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(settings.latitude, settings.longitude),
+            draggable: true
+        });
+        marker.setMap(map);     
+    </script>
+}
