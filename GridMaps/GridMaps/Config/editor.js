@@ -1,0 +1,12 @@
+{
+	"name": "GridMaps",
+	"alias": "gridMaps",
+	"view": "/App_Plugins/GridMaps/Views/gridmapsgrideditor.html",
+	"render": "/App_Plugins/GridMaps/Render/GridMapsGridEditor.cshtml",
+	"icon": "icon-location-nearby",
+    "config": {
+        "defaultLat": 50.1109221,
+        "defaultLng": 8.682126700000026,
+        "defaultZoom": 6
+    }
+}

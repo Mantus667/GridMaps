@@ -1,0 +1,10 @@
+﻿@using System.Web.Mvc.Html
+@using GridMaps
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+
+@if (Model.value != null)
+{
+    var settings = JsonConvert.DeserializeObject<MapSettings>(Model.value.ToString());
+    var id = new Guid().ToString() + "_map";
+    <div class="map" id="@id">@settings.Latitude - @settings.Longitude - @settings.Zoom</div>
+}
