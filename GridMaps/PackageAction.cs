@@ -99,7 +99,7 @@ namespace GridMaps
                 if (srcObj == null)
                     return false;
 
-                var idx = trgArr.FindIndex(x => x["alias"] == srcObj["alias"]);
+                var idx = trgArr.FindIndex(x => x["alias"].Value<string>() == srcObj["alias"].Value<string>());
                 if (idx >= 0)
                 {
                     trgArr.RemoveAt(idx);
