@@ -7,6 +7,9 @@
     "config": {
         "defaultLat": 50.1109221,
         "defaultLng": 8.682126700000026,
-        "defaultZoom": 6
+        "defaultZoom": 6,
+		"defaultMapType": "ROADMAP",
+		"defaultHeight": 400,
+		"showAsStreetView": false
     }
 }

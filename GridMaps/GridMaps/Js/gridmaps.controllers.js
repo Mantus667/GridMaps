@@ -6,8 +6,9 @@ angular.module("umbraco").controller("GridMapsEditorController", [
     "$routeParams",
     "assetsService",
     "notificationsService",
+    "GridMapsDialogService",
 
-    function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificationsService) {
+function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificationsService, GridMapsDialogService) {
 
         $scope.title = "Click to insert item";
         $scope.icon = "icon-location-nearby";
@@ -17,7 +18,23 @@ angular.module("umbraco").controller("GridMapsEditorController", [
             marker,
             place,
             geocoder,
-            mapCenter;
+            mapCenter,
+            mapElement,
+            panorama;
+
+        $scope.openSettings = function () {
+            GridMapsDialogService.open({
+                dialogData: { zoom: $scope.control.value.zoom, mapType: $scope.control.value.mapType, height: $scope.control.value.height, streetView: $scope.control.value.streetView },
+                callback: function (data) {
+                    $scope.control.value.zoom = parseInt(data.zoom);
+                    $scope.control.value.mapType = data.mapType;
+                    $scope.control.value.height = parseInt(data.height);
+                    $scope.control.value.streetView = data.streetView;
+
+                    UpdateMap();                    
+                }
+            });
+        };
 
         $scope.setValue = function (data) {
             $scope.control.value = data;
@@ -26,7 +43,10 @@ angular.module("umbraco").controller("GridMapsEditorController", [
         $scope.setValue($scope.control.value || {
             latitude: $scope.control.editor.config.defaultLat,
             longitude: $scope.control.editor.config.defaultLng,
-            zoom: $scope.control.editor.config.defaultZoom
+            zoom: $scope.control.editor.config.defaultZoom,
+            mapType: $scope.control.editor.config.defaultMapType,
+            height: $scope.control.editor.config.defaultHeight,
+            streetView: $scope.control.editor.config.showAsStreetView
         });
 
         $timeout(function () {
@@ -39,8 +59,16 @@ angular.module("umbraco").controller("GridMapsEditorController", [
         function initializeMap() {
             mapCenter = new google.maps.LatLng($scope.control.value.latitude, $scope.control.value.longitude);
 
-            var mapElement = document.getElementById($scope.guid + '_map');
-            var mapOptions = { zoom: $scope.control.value.zoom, center: mapCenter, mapTypeId: google.maps.MapTypeId.ROADMAP };
+            mapElement = document.getElementById($scope.guid + '_map');
+
+            var mapOptions = {
+                streetViewControl: false,
+                mapTypeControl: false,
+                zoom: $scope.control.value.zoom,
+                center: mapCenter,
+                mapTypeId: google.maps.MapTypeId[$scope.control.value.mapType]
+            };
+            var panoramaOptions = { position: mapCenter };
 
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(mapElement, mapOptions);
@@ -50,9 +78,12 @@ angular.module("umbraco").controller("GridMapsEditorController", [
                 position: new google.maps.LatLng($scope.control.value.latitude, $scope.control.value.longitude),
                 draggable: true
             });
-            marker.setMap(map);
+            marker.setMap(map);            
+            
+            panorama = new google.maps.StreetViewPanorama(mapElement, panoramaOptions);
+            map.setStreetView(panorama);          
 
-            lookupPosition(new google.maps.LatLng($scope.control.value.latitude, $scope.control.value.longitude));
+            lookupPosition(mapCenter);
             addMarkerDragEndListener();
 
             var lookupInputElement = document.getElementById($scope.guid + '_lookup');
@@ -62,6 +93,22 @@ angular.module("umbraco").controller("GridMapsEditorController", [
 
             addPlaceChangedListener();
             addZoomChangedListener();
+
+            UpdateMap();
+        }
+
+        function UpdateMap() {
+            map.setMapTypeId(google.maps.MapTypeId[$scope.control.value.mapType]);
+            map.setZoom($scope.control.value.zoom);
+            $(mapElement).css('height', $scope.control.value.height);            
+
+            panorama.setVisible(false);
+            if ($scope.control.value.streetView) {
+                panorama.setVisible(true);
+            }
+            map.setZoom($scope.control.value.zoom);
+            google.maps.event.trigger(map, 'resize')
+            map.setCenter(mapCenter);
         }
 
         function addMarkerDragEndListener() {
@@ -137,5 +184,24 @@ angular.module("umbraco").controller("GridMapsEditorController", [
 
         //Loading the styles
         assetsService.loadCss("~/app_plugins/GridMaps/Css/gmaps.css");
+    }
+]);
+
+angular.module("umbraco").controller("GridMapsEditorDialogController", [
+    "$scope",
+    "$rootScope",
+    "$timeout",
+    "$routeParams",
+
+    function ($scope, $rootScope, $timeout, $routeParams) {
+
+        $scope.save = function () {
+
+            // Make sure form is valid
+            if (!$scope.gmgeForm.$valid)
+                return;
+
+            $scope.submit($scope.dialogData);
+        };
     }
 ]);
