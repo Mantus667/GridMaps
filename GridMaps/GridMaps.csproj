@@ -44,6 +44,8 @@
     <None Include="GridMaps\Config\editor.json" />
     <Content Include="GridMaps\Css\gmaps.css" />
     <Content Include="GridMaps\Js\gridmaps.controllers.js" />
+    <Content Include="GridMaps\Js\gridmaps.services.js" />
+    <Content Include="GridMaps\Views\gridmapsgrideditor.dialog.html" />
     <Content Include="GridMaps\Views\gridmapsgrideditor.html" />
   </ItemGroup>
   <ItemGroup>

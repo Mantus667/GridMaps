@@ -1,5 +1,6 @@
 {
     "javascript" : [
-        '~/App_Plugins/GridMaps/Js/gridmaps.controllers.js'
+        '~/App_Plugins/GridMaps/Js/gridmaps.controllers.js',
+		'~/App_Plugins/GridMaps/Js/gridmaps.services.js'
     ]
 }
