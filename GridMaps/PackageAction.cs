@@ -56,13 +56,15 @@ namespace GridMaps
                 {
                     return false;
                 }
-                
+
                 if (trgArr.Any(x => x["alias"].Value<string>() == srcObj["alias"].Value<string>()))
                 {
-                    return false;
+                    trgArr[srcObj["alias"].Value<string>()]["config"] = srcObj["config"];
                 }
-
-                trgArr.Add(srcObj);
+                else
+                {
+                    trgArr.Add(srcObj);
+                }
 
                 File.WriteAllText(trg, JsonConvert.SerializeObject(trgArr, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8);
 
