@@ -59,7 +59,8 @@ namespace GridMaps
 
                 if (trgArr.Any(x => x["alias"].Value<string>() == srcObj["alias"].Value<string>()))
                 {
-                    trgArr[srcObj["alias"].Value<string>()]["config"] = srcObj["config"];
+                    var index = trgArr.IndexOf(srcObj);
+                    trgArr[index]["config"] = srcObj["config"];
                 }
                 else
                 {
