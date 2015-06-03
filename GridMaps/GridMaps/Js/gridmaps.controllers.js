@@ -66,6 +66,7 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
                 mapTypeControl: false,
                 zoom: $scope.control.value.zoom,
                 center: mapCenter,
+                scrollwheel: false,
                 mapTypeId: google.maps.MapTypeId[$scope.control.value.mapType]
             };
             var panoramaOptions = { position: mapCenter };
