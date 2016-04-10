@@ -2,7 +2,7 @@
     
     <div class="umb-panel-body no-header with-footer umb-scrollable" ng-switch="dialogMode">
         
-        <umb-control-group label="Choose a map type">
+        <umb-control-group label="Kies een map type">
             <select name="map-type" ng-model="dialogData.mapType" required>
                 <option>ROADMAP</option>
                 <option>SATELLITE</option>
@@ -11,15 +11,15 @@
             </select>
         </umb-control-group>
 
-        <umb-control-group label="Choose zoom">
+        <umb-control-group label="Kies zoom-niveau">
             <input type="number" name="zoom" ng-model="dialogData.zoom" required />
         </umb-control-group>
 
-        <umb-control-group label="Choose map height">
+<!--         <umb-control-group label="Choose map height">
             <input type="number" name="height" ng-model="dialogData.height" required />
-        </umb-control-group>
+        </umb-control-group> -->
 
-        <umb-control-group label="Show as streetview">
+        <umb-control-group label="Toon Streetview">
             <input type="checkbox" name="streetview" ng-model="dialogData.streetView" />
         </umb-control-group>
 

@@ -1,9 +1,11 @@
 .map{
-	height: 400px;
+	height: 100%;
+	min-height:300px;
+	margin-top: 10px;
 }
 
 .btn{
-	margin-top:10px;
+	/* margin-top:10px; */
 }
 
 .hide{

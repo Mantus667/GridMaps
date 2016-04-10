@@ -17,7 +17,8 @@
         var mapOptions = { 
             zoom: settings.zoom, 
             center: mapCenter, 
-            mapTypeId: google.maps.MapTypeId[settings.mapType]
+            mapTypeId: google.maps.MapTypeId[settings.mapType],
+			scrollwheel: false
         };
         var panoramaOptions = { position: mapCenter };
 
