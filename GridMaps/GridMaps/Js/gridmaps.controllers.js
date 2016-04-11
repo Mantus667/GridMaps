@@ -52,7 +52,7 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
         $timeout(function () {
             assetsService.loadJs('http://www.google.com/jsapi')
             .then(function () {
-                google.load("maps", "3", { callback: initializeMap, other_params: "sensor=false&libraries=places" });
+                google.load("maps", "3", { callback: initializeMap, other_params: "libraries=places" });
             });
         }, 200);
 
