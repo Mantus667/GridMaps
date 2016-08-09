@@ -24,14 +24,14 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
 
         $scope.openSettings = function () {
             GridMapsDialogService.open({
-                dialogData: { zoom: $scope.control.value.zoom, mapType: $scope.control.value.mapType, height: $scope.control.value.height, streetView: $scope.control.value.streetView },
+                dialogData: { zoom: $scope.control.value.zoom, mapType: $scope.control.value.mapType, height: $scope.control.value.height, streetView: $scope.control.value.streetView, apiKey: $scope.control.value.apiKey },
                 callback: function (data) {
                     $scope.control.value.zoom = parseInt(data.zoom);
                     $scope.control.value.mapType = data.mapType;
                     $scope.control.value.height = parseInt(data.height);
                     $scope.control.value.streetView = data.streetView;
-
-                    UpdateMap();                    
+                    $scope.control.value.apiKey = data.apiKey;
+                    google.load("maps", "3", { callback: initializeMap, other_params: "libraries=places&key=" + $scope.control.value.apiKey });
                 }
             });
         };
@@ -46,13 +46,16 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
             zoom: $scope.control.editor.config.defaultZoom,
             mapType: $scope.control.editor.config.defaultMapType,
             height: $scope.control.editor.config.defaultHeight,
-            streetView: $scope.control.editor.config.showAsStreetView
+            streetView: $scope.control.editor.config.showAsStreetView,
+            apiKey: ''
         });
 
         $timeout(function () {
             assetsService.loadJs('http://www.google.com/jsapi')
             .then(function () {
-                google.load("maps", "3", { callback: initializeMap, other_params: "libraries=places" });
+                if ($scope.control.value.apiKey != '') {
+                    google.load("maps", "3", { callback: initializeMap, other_params: "libraries=places&key=" + $scope.control.value.apiKey });
+                }
             });
         }, 200);
 
@@ -82,7 +85,11 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
             marker.setMap(map);            
             
             panorama = new google.maps.StreetViewPanorama(mapElement, panoramaOptions);
-            map.setStreetView(panorama);          
+            map.setStreetView(panorama);
+            panorama.setVisible(false);
+            if ($scope.control.value.streetView) {
+                panorama.setVisible(true);
+            }
 
             lookupPosition(mapCenter);
             addMarkerDragEndListener();
@@ -94,22 +101,6 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
 
             addPlaceChangedListener();
             addZoomChangedListener();
-
-            UpdateMap();
-        }
-
-        function UpdateMap() {
-            map.setMapTypeId(google.maps.MapTypeId[$scope.control.value.mapType]);
-            map.setZoom($scope.control.value.zoom);
-            $(mapElement).css('height', $scope.control.value.height);            
-
-            panorama.setVisible(false);
-            if ($scope.control.value.streetView) {
-                panorama.setVisible(true);
-            }
-            map.setZoom($scope.control.value.zoom);
-            google.maps.event.trigger(map, 'resize')
-            map.setCenter(mapCenter);
         }
 
         function addMarkerDragEndListener() {
