@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>/App_Plugins/GridMaps</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>editor.json</guid>
+      <orgPath>/App_Plugins/GridMaps/Config</orgPath>
+      <orgName>editor.json</orgName>
+    </file>
+    <file>
+      <guid>gmaps.css</guid>
+      <orgPath>/App_Plugins/GridMaps/Css</orgPath>
+      <orgName>gmaps.css</orgName>
+    </file>
+    <file>
+      <guid>gridmaps.controllers.js</guid>
+      <orgPath>/App_Plugins/GridMaps/Js</orgPath>
+      <orgName>gridmaps.controllers.js</orgName>
+    </file>
+    <file>
+      <guid>gridmaps.services.js</guid>
+      <orgPath>/App_Plugins/GridMaps/Js</orgPath>
+      <orgName>gridmaps.services.js</orgName>
+    </file>
+    <file>
+      <guid>gridmapsgrideditor.cshtml</guid>
+      <orgPath>/App_Plugins/GridMaps/Render</orgPath>
+      <orgName>gridmapsgrideditor.cshtml</orgName>
+    </file>
+    <file>
+      <guid>gridmapsgrideditor.dialog.html</guid>
+      <orgPath>/App_Plugins/GridMaps/Views</orgPath>
+      <orgName>gridmapsgrideditor.dialog.html</orgName>
+    </file>
+    <file>
+      <guid>gridmapsgrideditor.html</guid>
+      <orgPath>/App_Plugins/GridMaps/Views</orgPath>
+      <orgName>gridmapsgrideditor.html</orgName>
+    </file>
+    <file>
+      <guid>GridMaps.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>GridMaps.dll</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>GridMaps</name>
+      <version>1.2</version>
+      <license url="http://opensource.org/licenses/MIT">MIT License</license>
+      <url>our.umbraco.org/projects/website-utilities/gridmaps</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>David Brendel</name>
+      <website>http://www.davidbrendel.de</website>
+    </author>
+    <readme><![CDATA[GridMaps for Umbraco
+
+GridMaps is a simple grid editor for google maps to help you visualize google maps in the grid.
+
+Installation:
+
+Install the package and add the google maps script to your master layout..
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" undo="true" alias="GridMapsPackageAction" />
+  </Actions>
+</umbPackage>
