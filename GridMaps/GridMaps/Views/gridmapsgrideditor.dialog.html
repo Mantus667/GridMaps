@@ -1,7 +1,7 @@
 ﻿<form name="gmgeForm" novalidate class="gmge-dialog umb-panel" ng-controller="GridMapsEditorDialogController">
-    
+
     <div class="umb-panel-body no-header with-footer umb-scrollable" ng-switch="dialogMode">
-        
+
         <umb-control-group label="Choose a map type">
             <select name="map-type" ng-model="dialogData.mapType" required>
                 <option>ROADMAP</option>
@@ -23,23 +23,19 @@
             <input type="checkbox" name="streetview" ng-model="dialogData.streetView" />
         </umb-control-group>
 
-        <umb-control-group label="Maps API Key">
-            <input type="text" name="apikey" ng-model="dialogData.apiKey" />
-        </umb-control-group>
-
     </div>
 
     <div class="umb-panel-footer">
         <div class="umb-el-wrap umb-panel-buttons">
             <div class="btn-toolbar umb-btn-toolbar">
-                
-                <a href ng-click="close()" class="btn btn-link">
-	        		<localize key="general_cancel">Cancel</localize>
-				</a>
 
-				<button class="btn btn-primary" ng-click="save()">
-				    <localize key="buttons_save">Save</localize>
-				</button>
+                <a href ng-click="close()" class="btn btn-link">
+                    <localize key="general_cancel">Cancel</localize>
+                </a>
+
+                <button class="btn btn-primary" ng-click="save()">
+                    <localize key="buttons_save">Save</localize>
+                </button>
 
             </div>
         </div>
