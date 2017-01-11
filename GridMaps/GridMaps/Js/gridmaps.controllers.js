@@ -47,7 +47,7 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
             mapType: $scope.control.editor.config.defaultMapType,
             height: $scope.control.editor.config.defaultHeight,
             streetView: $scope.control.editor.config.showAsStreetView,
-            apiKey: ''
+            apiKey: $scope.control.editor.config.defaultApiKey,
         });
 
         $timeout(function () {
