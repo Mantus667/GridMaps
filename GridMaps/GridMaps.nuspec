@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>GridMaps</id>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <authors>David Brendel</authors>
     <owners>David Brendel</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>http://www.davidbrendel.de/gridmaps</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>GridMaps Google Maps Grid Editor for Umbraco</description>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2017</copyright>
     <tags>Umbraco GridMaps</tags>
   </metadata>
 </package>

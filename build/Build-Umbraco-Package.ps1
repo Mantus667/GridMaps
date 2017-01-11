@@ -4,7 +4,7 @@
 
 $directorypath = Split-Path $MyInvocation.MyCommand.Path
 $parentPath = Split-Path $directorypath -Parent
-$ReleaseVersionNumber = "1.2.0"
+$ReleaseVersionNumber = "1.3.0"
 $PackageManifest = "$directorypath\package.xml"
 $CreatedPackagesConfig = "$directorypath\createdPackages.config"
 $WebProjFolder = "$parentPath\GridMaps"

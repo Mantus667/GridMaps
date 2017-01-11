@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("David Brendel")]
 [assembly: AssemblyProduct("GridMaps")]
-[assembly: AssemblyCopyright("2015")]
+[assembly: AssemblyCopyright("2015 - 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
