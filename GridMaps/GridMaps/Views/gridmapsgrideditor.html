@@ -1,9 +1,15 @@
-<div ng-controller="GridMapsEditorController" class="umb-editor umb-googlemaps test">
-    <p class="clearfix"><a href="" class="btn pull-right" ng-click="openSettings()">Settings</a></p>
-    <div>
-        <input type="text" id="{{guid}}_lookup" class="umb-editor umb-textstring textstring"/>
+<div ng-controller="GridMapsEditorController" class="umb-editor umb-googlemaps gridmaps">
+    <div class="row">
+        <div class="span8">
+            <input type="text" id="{{guid}}_lookup" class="umb-editor umb-textstring textstring" />
+        </div>
+        <div class="span4 text-right">
+            <a href="" class="btn" ng-click="openSettings()">Settings</a>
+        </div>
     </div>
-    <div>
-        <div class="map" id="{{guid}}_map"></div>
+    <div class="row">
+        <div class="span12">
+            <div class="map" id="{{guid}}_map"></div>
+        </div>
     </div>
 </div>
