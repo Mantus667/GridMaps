@@ -11,9 +11,9 @@ Umbraco Package: [![Our Umbraco project page](https://img.shields.io/badge/our-u
 
 __Installation__
 
-Install the package and add the Google Maps script to your master layout..
+Install the package and add the Google Maps script to your master layout.
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=YOUR_API_KEY"></script>
     
 __Settings__
 
