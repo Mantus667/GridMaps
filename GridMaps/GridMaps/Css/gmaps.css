@@ -1,11 +1,17 @@
-.map{
+.gridmaps .map{
 	height: 400px;
+    margin: 0 10px;
+    background-color: #e0e0e0;
 }
 
-.btn{
-	margin-top:10px;
+.gridmaps .umb-textstring {
+    margin: 10px;
 }
 
-.hide{
+.gridmaps .btn {
+    margin: 10px;
+}
+
+.gridmaps .hide{
 	display: none;
 }
