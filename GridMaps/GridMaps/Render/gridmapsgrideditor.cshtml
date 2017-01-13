@@ -21,7 +21,12 @@
             };
             
             var map = new google.maps.Map(mapElement, mapOptions);
-            
+            if (settings.streetView) {
+                var panoramaOptions = { position: mapCenter };
+                var panorama = new google.maps.StreetViewPanorama(mapElement, panoramaOptions);
+                map.setStreetView(panorama);
+            }
+
             var marker = new google.maps.Marker({
                 map: map,
                 position: new google.maps.LatLng(settings.latitude, settings.longitude),
