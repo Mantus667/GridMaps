@@ -13,7 +13,7 @@ __Installation__
 
 Install the package and add the Google Maps script to your master layout.
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=YOUR_API_KEY"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initializeMap" async defer></script>
     
 __Settings__
 
