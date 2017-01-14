@@ -13,10 +13,10 @@ __Installation__
 
 Install the package and add the Google Maps script to your master layout.
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=YOUR_API_KEY"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initializeMap" async defer></script>
     
 __Settings__
 
-Remember to update the settings in `~/config/grid.editors.config.js"`
+Remember to update the settings in `~/app_plugins/GridMaps/package.manifest"`
 
 You will need to set the `defaultApiKey` to a Google Maps API Key. [Google - Get API Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
