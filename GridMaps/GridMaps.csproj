@@ -49,7 +49,6 @@
     <Content Include="GridMaps\Views\gridmapsgrideditor.html" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PackageAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

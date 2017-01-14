@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>GridMaps</id>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <authors>David Brendel</authors>
     <owners>David Brendel</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,4 +12,7 @@
     <copyright>Copyright 2017</copyright>
     <tags>Umbraco GridMaps</tags>
   </metadata>
+  <files>
+    <file src="GridMaps\**\*.*" target="content\App_Plugins" />
+  </files>
 </package>
