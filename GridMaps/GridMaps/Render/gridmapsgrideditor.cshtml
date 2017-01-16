@@ -4,36 +4,39 @@
     string value = Model.value.ToString();
     var id = string.Format("{0}_map", Guid.NewGuid());
 
-    <div class="map gridmaps" id="@id" style="width:100%;"></div>
+    <div class="map gridmaps" id="@id" data-settings="@value" style="width:100%;"></div>
 
     <script type="text/javascript">
         function initializeMap() {
-            var mapElement = document.getElementById('@id');
-            var settings = @Html.Raw(value);
-            var mapCenter = new google.maps.LatLng(settings.latitude, settings.longitude);
-            
-            mapElement.style.height = settings.height + "px";
+            var mapElements = [].slice.call(document.getElementsByClassName('gridmaps'));
 
-            var mapOptions = {
-                zoom: settings.zoom,
-                center: mapCenter,
-                mapTypeId: google.maps.MapTypeId[settings.mapType]
-            };
+            mapElements.forEach(function(mapElement, index){
+                var settings = JSON.parse(mapElement.getAttribute('data-settings'));
+                var mapCenter = new google.maps.LatLng(settings.latitude, settings.longitude);
             
-            var map = new google.maps.Map(mapElement, mapOptions);
-            if (settings.streetView) {
-                var panoramaOptions = { position: mapCenter };
-                var panorama = new google.maps.StreetViewPanorama(mapElement, panoramaOptions);
-                map.setStreetView(panorama);
-            }
+                mapElement.style.height = settings.height + "px";
 
-            var marker = new google.maps.Marker({
-                map: map,
-                position: new google.maps.LatLng(settings.latitude, settings.longitude),
-                draggable: true
+                var mapOptions = {
+                    zoom: settings.zoom,
+                    center: mapCenter,
+                    mapTypeId: google.maps.MapTypeId[settings.mapType]
+                };
+            
+                var map = new google.maps.Map(mapElement, mapOptions);
+                if (settings.streetView) {
+                    var panoramaOptions = { position: mapCenter };
+                    var panorama = new google.maps.StreetViewPanorama(mapElement, panoramaOptions);
+                    map.setStreetView(panorama);
+                }
+
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(settings.latitude, settings.longitude),
+                    draggable: true
+                });
+
+                marker.setMap(map);
             });
-
-            marker.setMap(map);
         }
     </script>
 }
