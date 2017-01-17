@@ -51,7 +51,7 @@ function ($scope, $rootScope, $timeout, $routeParams, assetsService, notificatio
         });
 
         $timeout(function () {
-            assetsService.loadJs('http://www.google.com/jsapi')
+            assetsService.loadJs('https://www.google.com/jsapi')
             .then(function () {
                 if ($scope.control.value.apiKey != '') {
                     google.load("maps", "3", { callback: initializeMap, other_params: "libraries=places&key=" + $scope.control.value.apiKey });
