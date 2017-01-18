@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>GridMaps</id>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
     <authors>David Brendel</authors>
     <owners>David Brendel</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>

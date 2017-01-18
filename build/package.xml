@@ -45,7 +45,7 @@
   <info>
     <package>
       <name>GridMaps</name>
-      <version>1.4.0</version>
+      <version>1.4.1</version>
       <license url="http://opensource.org/licenses/MIT">MIT License</license>
       <url>our.umbraco.org/projects/website-utilities/gridmaps</url>
       <requirements>
